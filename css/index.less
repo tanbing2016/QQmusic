@@ -1,0 +1,237 @@
+@import "reset";
+@import (reference) "public"; //reference 是只是导过来使用，不编译这里面的代码
+html{
+  font-size: 100px;//1rem就是100px
+}
+html,body,.musicBox{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.musicBox{
+  position: relative;
+
+  .musicBg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    background: url("../img/poster.jpg") no-repeat;
+    background-size: cover;
+    -webkit-filter: blur(10px);
+    filter: blur(10px);
+    z-index: -2;
+  }
+
+  .musicBgMask{
+    .musicBg;
+    z-index: -1;
+    background: rgba(0,0,0,0.5);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+  }
+
+  audio{
+    display: none;
+  }
+
+}
+//header
+.header{
+  position: relative;
+  padding: .3rem;
+  height: 1.2rem;
+  background: rgba(0,0,0,0.2);
+
+  .base{
+    width: 4.5rem;
+    height: 100%;
+
+    img{
+      display: inline-block;
+      vertical-align: top;
+      width: 1.2rem;
+      height: 1.2rem;
+    }
+
+    p{
+      display: inline-block;
+      vertical-align: top;
+
+      span{
+        display: block;
+        line-height: .6rem;
+        font-size: .36rem;
+        color: @colorWhite;
+      }
+    }
+  }
+
+  .musicBtn{
+    position: absolute;
+    width: .9rem;
+    height: .9rem;
+    right: .3rem;
+    top:50%;
+    margin-top: -.45rem;
+    border: .02rem solid @colorWhite;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;//默认值是content-box
+    border-radius: 50%;
+
+    &.play{
+      &:after{
+        display: block;
+        position: absolute;
+        content:"";
+        width: 0;
+        height: 0;
+        font-size: 0;
+        border:.2rem solid transparent;
+        border-left-color: @colorWhite;
+        top: 50%;
+        left: 50%;
+        margin:-.2rem 0 0 -.05rem;
+      }
+
+    }
+    &.pause{
+      display: none;
+      &:after{
+        display: block;
+        position: absolute;
+        content:"||";
+        letter-spacing: .03rem;
+        top: 50%;
+        left:50%;
+        margin:-.2rem 0 0 -.2rem;
+        width: .4rem;
+        height: .4rem;
+        line-height: .4rem;
+        text-align: center;
+        color: @colorWhite;
+        font-size: .4rem;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+//main
+.main{
+  position: relative;
+  margin:.4rem .2rem;
+  height: 7rem;
+  overflow: hidden;
+
+  .lyric{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    .transition(@duration: .3s);
+
+    p{
+      text-align: center;
+      line-height: .84rem;
+      font-size: .32rem;
+      color: @colorGray;
+      letter-spacing: .04rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+
+      &.bg{
+        color: @colorGreen;
+      }
+    }
+  }
+}
+
+//footer
+.footer{
+  margin:0 .2rem;
+  height:3rem;
+
+  .storage{
+    height: .8rem;
+    position: relative;
+
+    a{
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -.21rem;
+      display: block;
+      width: .5rem;
+      height:.42rem;
+      .spriteFn()
+    }
+  }
+
+  .progress{
+    height: .8rem;
+    line-height: .8rem;
+
+    .current,.duration{
+      float: left;
+      width: .9rem;
+      text-align: center;
+      font-size: .24rem;
+      color: @colorGray;
+    }
+  }
+
+  .timeLine{
+    position: relative;
+    height:.04rem;
+    width: 4.2rem;
+    float: left;
+    background: @colorGray;
+    margin-top: .38rem;
+
+    span{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 100%;
+      background: @colorGreen;
+      .transition(@duration: .5s)
+    }
+  }
+
+  .downLoad{
+    height: .9rem;
+
+    i{
+      position: relative;
+      display: block;
+      margin:0 auto;
+      height: 100%;
+      line-height: .9rem;
+      width: 4.4rem;
+      text-align: center;
+      color: @colorWhite;
+      font-size: .36rem;
+      font-style: normal;
+      border-radius: .45rem;
+      background: @colorGreen;
+
+      &:after{
+        display: block;
+        content: "";
+        position: absolute;
+        width: .66rem;
+        height: .66rem;
+        border-radius: 50%;
+        .spriteFn(@y:-6rem);
+        top: 50%;
+        left:.5rem;
+        margin:-.33rem;
+      }
+    }
+  }
+}

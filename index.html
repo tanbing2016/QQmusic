@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--viewport:视口-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>Music</title>
+    <!--less-->
+    <link rel="stylesheet/less" href="./css/index.less">
+    <script src="js/less-2.5.3.min.js"></script>
+</head>
+<body>
+<section class="musicBox">
+    <!--base-->
+    <div class="musicBg"></div>
+    <div class="musicBgMask"></div>
+    <!--audio    属性:
+                controls  是否使用浏览器自带的播放组件，默认不用
+                preload   是否提前加载   默认是auto  打开就加载  metadata  加载基础信息  none  什么都不加载，只有播放的时候再加载
+                autoplay   一打开页面自动播放
+                loop  是否循环播放
+                duration  当前音频的总时间，只有音频加载后才能获取带结果
+                currentTime  当前音频播放的时间，单位是S
+       Audio   中常用的方法:
+                 play()
+                 pause()     ele.paused===true   当前为暂停状态
+      Audio   中常用的事件:
+                canplay():音频部分资源已经成功，可以播放声音了
+    -->
+    <audio src="img/demo.m4a" preload="none" id="musicAudio"></audio>
+    <!--header-->
+    <header class="header">
+        <div class="base">
+            <img src="./img/poster.jpg" alt="">
+            <p>
+                <span>模特</span>
+                <span>李荣浩</span>
+            </p>
+        </div>
+        <a href="javascript:void 0" class="musicBtn play"></a>
+        <a href="javascript:;" class="musicBtn pause"></a>
+    </header>
+    <!--main-->
+    <main class="main">
+        <div class="lyric">
+            <p>模特-李荣浩</p>
+            <p>词:周耀辉</p>
+        </div>
+    </main>
+    <!--footer-->
+    <footer class="footer">
+        <div class="storage"><a href="javascript:;"></a></div>
+        <div class="progress">
+            <div class="current">00:00</div>
+            <div class="timeLine">
+                <span></span>
+            </div>
+            <div class="duration">00:00</div>
+        </div>
+        <div class="downLoad"><i>下载这首music</i></div>
+    </footer>
+</section>
+<script src="js/zepto.min.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
